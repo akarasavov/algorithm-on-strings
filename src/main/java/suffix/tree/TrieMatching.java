@@ -10,9 +10,8 @@ public class TrieMatching implements Runnable {
 
     List<Integer> solve(String text, List<String> patterns) {
         List<Integer> result = new ArrayList<>();
-        Trie trie = new Trie();
 
-        List<Map<Character, Integer>> maps = trie.buildTrie(patterns);
+        List<Map<Character, Integer>> maps = Trie.buildTrie(patterns);
 
         for (String pattern : patterns) {
             result.addAll(findIndex(text, maps, pattern.length()));
@@ -50,7 +49,7 @@ public class TrieMatching implements Runnable {
 
     public void run() {
         try {
-            String path = Trie.class.getClassLoader().getResource("trie_matching/sample1").getFile();
+            String path = TrieTask.class.getClassLoader().getResource("trie_matching/sample1").getFile();
             BufferedReader in = new BufferedReader(new FileReader(path));
             String text = in.readLine();
             int n = Integer.parseInt(in.readLine());
